@@ -1,0 +1,51 @@
+[submodule "nvim-plugins/nerdtree"]
+	path = nvim-plugins/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule "nvim-plugins/gruvbox"]
+	path = nvim-plugins/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule "nvim-plugins/plenary.nvim"]
+	path = nvim-plugins/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "nvim-plugins/nui.nvim"]
+	path = nvim-plugins/nui.nvim
+	url = https://github.com/MunifTanjim/nui.nvim.git
+[submodule "nvim-plugins/vim-surround.git"]
+	path = nvim-plugins/vim-surround.git
+	url = https://github.com/nvim-neo-tree/neo-tree.nvim.git
+[submodule "nvim-plugins/neo-tree.nvim"]
+	path = nvim-plugins/neo-tree.nvim
+	url = https://github.com/nvim-neo-tree/neo-tree.nvim.git
+[submodule "nvim-plugins/vim-surround"]
+	path = nvim-plugins/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "nvim-plugins/vim-commentary"]
+	path = nvim-plugins/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "nvim-plugins/vim-fugitive"]
+	path = nvim-plugins/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "nvim-plugins/vim-abolish"]
+	path = nvim-plugins/vim-abolish
+	url = https://github.com/tpope/vim-abolish
+[submodule "nvim-plugins/vim-illuminate"]
+	path = nvim-plugins/vim-illuminate
+	url = https://github.com/RRethy/vim-illuminate
+[submodule "nvim-plugins/vim-better-whitespace"]
+	path = nvim-plugins/vim-better-whitespace
+	url = https://github.com/ntpeters/vim-better-whitespace
+[submodule "nvim-plugins/diffview.nvim"]
+	path = nvim-plugins/diffview.nvim
+	url = https://github.com/sindrets/diffview.nvim
+[submodule "nvim-plugins/symbols-outline.nvim"]
+	path = nvim-plugins/symbols-outline.nvim
+	url = https://github.com/simrat39/symbols-outline.nvim
+[submodule "nvim-plugins/vim-rainbow"]
+	path = nvim-plugins/vim-rainbow
+	url = https://github.com/frazrepo/vim-rainbow
+[submodule "nvim-plugins/vim-lion"]
+	path = nvim-plugins/vim-lion
+	url = https://github.com/tommcdo/vim-lion
+[submodule "nvim-plugins/lazy.nvim"]
+	path = nvim-plugins/lazy.nvim
+	url = https://github.com/folke/lazy.nvim.git

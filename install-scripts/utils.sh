@@ -37,3 +37,15 @@ echo_error ()
 {
     echo -e "${ANSI_RED}warning${ANSI_RESET}: $@"
 }
+
+special_warning_aproval_or_exit ()
+{
+    echo_warning $1
+    read -p "Continue? [Y/n]: " user_answer
+    if [ "${user_answer}" == "y" ] || [ "${user_answer}" == "" ]; then
+        echo_info "continuing..."
+    else
+        echo_info "exiting..."
+        exit 0
+    fi
+}

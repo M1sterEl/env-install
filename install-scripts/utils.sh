@@ -5,6 +5,7 @@
 ######################
 
 COPY_FILES_DIR="../files"
+DEFAULT_CONFIGS_DIR="${HOME}/.config/"
 
 
 ###################
@@ -40,12 +41,36 @@ echo_error ()
 
 special_warning_aproval_or_exit ()
 {
-    echo_warning $1
+    message=$1
+
+    # Echos the given warning message to the user.
+    echo_warning $message
+
+    # Get user answer.
     read -p "Continue? [Y/n]: " user_answer
+
+    # Exists or continues based on the users input.
     if [ "${user_answer}" == "y" ] || [ "${user_answer}" == "" ]; then
         echo_info "continuing..."
     else
         echo_info "exiting..."
         exit 0
+    fi
+}
+
+ask_if_to_change_value () # "value name" "default given value"
+{
+    value_name=$1
+    default_given_value=$2
+
+    # Prints the massage given to the function
+    read -p "Enter the value for ${value_name} (${default_given_value}):" user_answer
+
+    # If the user entered a value, meaning user_answer is not empty.
+    # Echo the given value.
+    if [ "${user_answer}" != "" ]; then
+        echo $user_answer
+    else
+        echo $default_given_value
     fi
 }

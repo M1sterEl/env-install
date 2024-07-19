@@ -15,9 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ';'
 vim.g.maplocalleader = ';'
 
--- Load personal prefrences.
-require('settings')
-
 require("lazy").setup({
 	{
 	  "morhetz/gruvbox",
@@ -26,6 +23,12 @@ require("lazy").setup({
 	  config = function()
 	  vim.cmd([[colorscheme gruvbox]])
   	  end,
+	},
+	{
+	  "neovim/nvim-lspconfig",
+	  dir = "/home/user_name_to_replace/.config/nvim/plugins/nvim-lspconfig",
+	   config = function()
+	   end,
 	},
 	{
 	  "nvim-lua/plenary.nvim",
@@ -76,6 +79,9 @@ require("lazy").setup({
 	  dir = "/home/user_name_to_replace/.config/nvim/plugins/vim-rainbow"
 	},
 })
+
+-- Load personal prefrences.
+require('settings')
 
 -- Load personal keymaps.
 require('maps')

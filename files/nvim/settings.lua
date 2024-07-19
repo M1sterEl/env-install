@@ -165,6 +165,31 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end
 })
 
+lspconfig.pylsp.setup {
+on_attach = custom_attach,
+settings = {
+    pylsp = {
+    plugins = {
+        -- formatter options
+        black = { enabled = false },
+        autopep8 = { enabled = false },
+        yapf = { enabled = false },
+        -- linter options
+        pylint = { enabled = false, executable = "pylint" },
+        pyflakes = { enabled = false },
+        pycodestyle = { enabled = false },
+        -- type checker
+        pylsp_mypy = { enabled = true },
+        -- import sorting
+        pyls_isort = { enabled = true },
+    },
+    },
+},
+flags = {
+    debounce_text_changes = 200,
+},
+capabilities = capabilities,
+}
 
 -- Rust
 vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -197,4 +222,15 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		o.syntax = 'groovy'
 		set_tab(4)
 	end
+})
+
+-- Bash
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'sh',
+  callback = function()
+    vim.lsp.start({
+      name = 'bash-language-server',
+      cmd = { 'bash-language-server', 'start' },
+    })
+  end,
 })

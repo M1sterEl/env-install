@@ -110,6 +110,22 @@ setup_plugins ()
 
 }
 
+install_lsps ()
+{
+    # The lsp settings for vim are already written in the files copied in the 'setup_nvim_prefrences' function.
+
+    sudo apt update
+
+    # Some lsps require npm to be installed.
+    sudo apt install --no-install-recommends npm
+
+    # Install an lsp server for bash.
+    sudo npm i -g bash-language-server
+
+    # Install an lsp server for python.
+    sudo apt install -y python3-pylsp
+}
+
 setup_nvim_prefrences ()
 {
     echo_info " installing packages: ${NEEDED_APTS_FOR_WANTED_BEHAVIOR}, for some needed custom behavior"
@@ -140,4 +156,5 @@ setup_nvim_prefrences ()
 
 install_nvim
 setup_plugins
+install_lsps
 setup_nvim_prefrences

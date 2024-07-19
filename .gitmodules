@@ -49,3 +49,6 @@
 [submodule "nvim-plugins/lazy.nvim"]
 	path = nvim-plugins/lazy.nvim
 	url = https://github.com/folke/lazy.nvim.git
+[submodule "nvim-plugins/nvim-lspconfig"]
+	path = nvim-plugins/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig

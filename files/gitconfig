@@ -1,0 +1,16 @@
+[alias]
+	tree = log --oneline --decorate --graph --all
+    prev = log -20 --oneline
+	co = checkout
+	sw = switch
+	st = status
+	s = status
+	subsync = submodule update --init --recursive
+
+	a = add
+	fixup = rebase -i --autosquash
+	pfl = push --force-with-lease
+	amend = commit --amend
+[push]
+	autoSetupRemote = true
+

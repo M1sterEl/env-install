@@ -1,3 +1,5 @@
+-- Auto complete mappings are located in the settings.lua file.
+-- They are configured together with the nvim-cmp plugin configuration.
 local map = function(mode, lhs, rhs)
 	vim.keymap.set(mode, lhs, rhs, {silent = true})
 end

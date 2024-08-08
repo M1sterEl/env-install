@@ -30,6 +30,17 @@ require("lazy").setup({
 	   config = function()
 	   end,
 	},
+  { "hrsh7th/nvim-cmp",
+	  dir = "/home/user_name_to_replace/.config/nvim/plugins/nvim-cmp",
+  },
+  { 
+    "hrsh7th/cmp-nvim-lsp",
+	  dir = "/home/user_name_to_replace/.config/nvim/plugins/cmp-nvim-lsp",
+  },
+  {
+    "hrsh7th/cmp-buffer",
+	  dir = "/home/user_name_to_replace/.config/nvim/plugins/cmp-buffer",
+  },
 	{
 	  "nvim-lua/plenary.nvim",
 	  dir = "/home/user_name_to_replace/.config/nvim/plugins/plenary.nvim"

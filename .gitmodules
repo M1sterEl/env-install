@@ -52,3 +52,12 @@
 [submodule "nvim-plugins/nvim-lspconfig"]
 	path = nvim-plugins/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig
+[submodule "nvim-plugins/cmp-nvim-lsp"]
+	path = nvim-plugins/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
+[submodule "nvim-plugins/nvim-cmp"]
+	path = nvim-plugins/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule "nvim-plugins/cmp-buffer"]
+	path = nvim-plugins/cmp-buffer
+	url = https://github.com/hrsh7th/cmp-buffer.git

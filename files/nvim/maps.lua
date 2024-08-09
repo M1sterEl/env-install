@@ -49,6 +49,7 @@ noremap('n', '<C-Down>', '<C-w>-')
 -- NeoTree
 noremap('n', '<C-\\>', '<CMD>Neotree toggle<CR>') -- Neotree toggle
 
--- fzf
-noremap('n', '<leader>f', '<CMD>Files<CR>')
-noremap('n', '<leader><leader>', '<CMD>Rg<CR>')
+-- telescope
+-- To change the keys used when in the telescope preview window, look at the settings file.
+noremap('n', '<leader>f', "<CMD>:lua require'telescope.builtin'.find_files({hidden = true})<CR>")
+noremap('n', '<leader><leader>', "<CMD>:lua require'telescope.builtin'.live_grep()<CR>")

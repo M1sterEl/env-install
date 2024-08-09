@@ -41,9 +41,14 @@ require("lazy").setup({
     "hrsh7th/cmp-buffer",
 	  dir = "/home/user_name_to_replace/.config/nvim/plugins/cmp-buffer",
   },
+  {
+    'nvim-telescope/telescope.nvim',
+	  dir = "/home/user_name_to_replace/.config/nvim/plugins/telescope.nvim",
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
 	{
 	  "nvim-lua/plenary.nvim",
-	  dir = "/home/user_name_to_replace/.config/nvim/plugins/plenary.nvim"
+	  dir = "/home/user_name_to_replace/.config/nvim/plugins/plenary.nvim",
 	},
 	{
 	  "MunifTanjim/nuy.nvim",

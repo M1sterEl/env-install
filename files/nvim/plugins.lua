@@ -94,6 +94,10 @@ require("lazy").setup({
 	  "frazrepo/vim-rainbow",
 	  dir = "/home/user_name_to_replace/.config/nvim/plugins/vim-rainbow"
 	},
+  {
+    "lukas-reineke/indent-blankline.nvim",
+	  dir = "/home/user_name_to_replace/.config/nvim/plugins/indent-blankline.nvim",
+  },
 })
 
 -- Load personal prefrences.

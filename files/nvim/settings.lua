@@ -139,12 +139,15 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end
 })
 
--- Needs clangd to installed to work
+-- Needs clangd to be installed to work
 lspconfig.clangd.setup({
   on_attach = lsp_attach,
+    -- Sets some default capabilities
     capabilities = capabilities,
+    -- Gives the path to the lsp binary
     cmd = { "/usr/bin/clangd" },
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+    -- Tells lspconfig what files to look in for clangd settings
     root_dir = lspconfig.util.root_pattern(
       '.clangd'
       ,'.clang-tidy'

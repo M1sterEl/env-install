@@ -98,6 +98,10 @@ require("lazy").setup({
     "lukas-reineke/indent-blankline.nvim",
 	  dir = "/home/user_name_to_replace/.config/nvim/plugins/indent-blankline.nvim",
   },
+  {
+    "ntpeters/vim-better-whitespace",
+	  dir = "/home/user_name_to_replace/.config/nvim/plugins/vim-better-whitespace",
+  },
 })
 
 -- Load personal prefrences.

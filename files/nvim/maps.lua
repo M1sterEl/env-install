@@ -10,7 +10,7 @@ end
 
 -- Genral
 noremap('n', 'Q', '<CMD>noh<CR>') -- Disable search hilight
-noremap('n', '<leader>t', '<CMD>trim<CR>') -- Trim whitespaces
+noremap('n', '<leader>t', '<CMD>Trim<CR>') -- Trim whitespaces
 noremap('n', 'nl', 'o<Esc>') -- Add a black line below
 noremap('n', 'sa', 'gg0vG$') -- Visual select the entire file
 

@@ -16,7 +16,7 @@ end
 
 function trim()
 	local save = vim.fn.winsaveview()
-	vim.cmd([[keeppatterns %s/\s/+$//e]])
+	vim.cmd([[keeppatterns %s/\s\+$//e]])
 	vim.fn.winrestview(save)
 end
 
@@ -41,6 +41,7 @@ o.spell = true -- Set spell checking
 o.splitright = true -- Set to split new files to right
 o.ignorecase = true -- Set search to be case insensitive
 o.wrap = false -- Set the text to not wrap
+o.list = true -- Set to show trailing whitespace
 
 set_tab(4) -- Default tab value is 4
 

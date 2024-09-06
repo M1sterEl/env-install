@@ -13,6 +13,7 @@ noremap('n', 'Q', '<CMD>noh<CR>') -- Disable search hilight
 noremap('n', '<leader>t', '<CMD>Trim<CR>') -- Trim whitespaces
 noremap('n', 'nl', 'o<Esc>') -- Add a black line below
 noremap('n', 'sa', 'gg0vG$') -- Visual select the entire file
+noremap({'n','i'}, '<C-s>', '<Esc>:w<CR>') -- Ctrl+s save
 
 -- Tabs
 noremap('n', '<leader>tn', '<CMD>tabnew<CR>') -- Tab new

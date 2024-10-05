@@ -67,3 +67,6 @@
 [submodule "nvim-plugins/indent-blankline.nvim"]
 	path = offline-dir/nvim/nvim-plugins/indent-blankline.nvim
 	url = https://github.com/lukas-reineke/indent-blankline.nvim.git
+[submodule "offline-dir/nvim/nvim-plugins/gitgraph"]
+	path = offline-dir/nvim/nvim-plugins/gitgraph
+	url = https://github.com/isakbm/gitgraph.nvim.git

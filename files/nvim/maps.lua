@@ -8,8 +8,8 @@ local noremap = function(mode, lhs, rhs)
 	vim.keymap.set(mode, lhs, rhs, {silent = true, noremap = true})
 end
 
--- Genral
-noremap('n', 'Q', '<CMD>noh<CR>') -- Disable search hilight
+-- General
+noremap('n', 'Q', '<CMD>noh<CR>') -- Disable search highlight
 noremap('n', '<leader>t', '<CMD>Trim<CR>') -- Trim whitespaces
 noremap('n', 'nl', 'o<Esc>') -- Add a black line below
 noremap('n', 'sa', 'gg0vG$') -- Visual select the entire file
@@ -54,3 +54,10 @@ noremap('n', '<C-\\>', '<CMD>Neotree toggle<CR>') -- Neotree toggle
 -- To change the keys used when in the telescope preview window, look at the settings file.
 noremap('n', '<leader>f', "<CMD>:lua require'telescope.builtin'.find_files({hidden = true})<CR>")
 noremap('n', '<leader><leader>', "<CMD>:lua require'telescope.builtin'.live_grep()<CR>")
+
+-- Gitfugitive
+noremap('n', 'gb', "<CMD>:Git blame<CR>")
+
+-- Vim Diffview
+noremap('n', 'dvo', "<CMD>:DiffviewOpen<CR>")
+noremap('n', 'dvf', "<CMD>:DiffviewToggleFiles<CR>")

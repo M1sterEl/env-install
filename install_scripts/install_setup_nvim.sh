@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 source utils.sh
 
@@ -140,7 +141,7 @@ setup_plugins ()
 
 	# Copies the plugins.
 	echo_info "copying plugins to ${NVIM_CONFIG_DIR}/plugins"
-	cp -r "${NVIM_PLUGINS_DIR}/*" "${NVIM_CONFIG_DIR}/plugins"
+	cp -r ${NVIM_PLUGINS_DIR}/* "${NVIM_CONFIG_DIR}/plugins"
 
     # This is needed since other wise the plugins folders are not copied.
     sync
@@ -233,7 +234,7 @@ setup_nvim_prefrences ()
 
 	cp ${NVIM_FILES_DIR}/init.lua ${NVIM_CONFIG_DIR}/init.lua
 
-	eho_success "copied init.lua"
+	echo_success "copied init.lua"
 
 	echo_info "copying settings.lua and maps.lua ${NVIM_CONFIG_DIR}"
 

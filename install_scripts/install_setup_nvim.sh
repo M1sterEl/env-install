@@ -103,8 +103,11 @@ copy_configured_plugins_file ()
 	# Create a tmp file to pipe the init.lua file contents after correcting to the correct user.
 	tmp_file=$(mktemp)
 
-	# Change to correct user name and pipe to tempfile.
-	cat $NVIM_FILES_DIR/plugins.lua | sed --expression "s/user_name_to_replace/${user}/g"  > $tmp_file
+    # Changes the "\" in the path to "/\", so that the next sed command could correctly process the path.
+    regex_modified_nvim_config_dir=$(echo "${NVIM_CONFIG_DIR}" | sed -e "s|\/|\\\/|g")
+
+	# Change to correct path and name given at the set up of the NVIM_CONFIG_DIR variable, and pipe to tempfile.
+	cat $NVIM_FILES_DIR/plugins.lua | sed --expression "s/nvim_path_to_replace/${regex_modified_nvim_config_dir}/g"  > $tmp_file
 
 	echo_info "creating ${NVIM_CONFIG_DIR}/lua dir"
 
@@ -141,6 +144,7 @@ setup_plugins ()
 
 	# Copies the plugins.
 	echo_info "copying plugins to ${NVIM_CONFIG_DIR}/plugins"
+	mkdir -p "${NVIM_CONFIG_DIR}/plugins"
 	cp -r ${NVIM_PLUGINS_DIR}/* "${NVIM_CONFIG_DIR}/plugins"
 
     # This is needed since other wise the plugins folders are not copied.

@@ -19,7 +19,7 @@ HOST_NVIM_PATH_LOCATION = pathlib.Path("/usr/bin/nvim")
 NVIM_OFFLINE_DIR = pathlib.Path(f"{global_constants.TOP_PROJECT_DIR}/offline-dir/nvim")
 NVIM_OFFLINE_APPIMAGE_LOCATION = pathlib.Path(f"{NVIM_OFFLINE_DIR}/nvim.appimage")
 NVIM_PLUGINS_DIR = pathlib.Path(f"{NVIM_OFFLINE_DIR}/nvim-plugins")
-NVIM_FILES_DIR = pathlib.Path(f"{global_constants.TOP_PROJECT_DIR}/files/nvim")
+NVIM_FILES_DIR = pathlib.Path(f"{global_constants.DEFUALT_FILES_DIR}/nvim")
 
 
 def install_nvim_appimage(offline_mode: bool = False) -> None:

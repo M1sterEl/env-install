@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 
 <<<<<<< HEAD:install_scripts/utils.py
+<<<<<<< HEAD:install_scripts/utils.py
 import requests
 from typing import Any
 =======
 >>>>>>> 68e31ac (Converted the utils.sh file from bash to python.):install-scripts/utils.py
+=======
+import requests
+from typing import Any
+>>>>>>> 82fbd06 (Converted install_setup_nvim.sh from bash to python):install-scripts/utils.py
 
 ANSI_CLEAR  = '\033[0m'
 PINK        = '\033[95m'
@@ -82,6 +87,9 @@ def ask_if_to_change_value(value_name: str, default_given_value: str) -> str:
 
     return input(message_fstring) or default_given_value
 <<<<<<< HEAD:install_scripts/utils.py
+<<<<<<< HEAD:install_scripts/utils.py
+=======
+>>>>>>> 82fbd06 (Converted install_setup_nvim.sh from bash to python):install-scripts/utils.py
 
 
 def get_from_url(url: str) -> Any:
@@ -94,5 +102,8 @@ def get_from_url(url: str) -> Any:
     """
 
     return requests.get(url).content
+<<<<<<< HEAD:install_scripts/utils.py
 =======
 >>>>>>> 68e31ac (Converted the utils.sh file from bash to python.):install-scripts/utils.py
+=======
+>>>>>>> 82fbd06 (Converted install_setup_nvim.sh from bash to python):install-scripts/utils.py

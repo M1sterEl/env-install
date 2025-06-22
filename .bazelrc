@@ -1,0 +1,5 @@
+# Enables bazelmod for every command.
+common --enable_bzlmod
+
+# Set the bazel output dir path.
+build --symlink_prefix="./bazel_output/"

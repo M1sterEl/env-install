@@ -1,0 +1,12 @@
+on:
+  pull_request:
+    # Runs the workflow when a pr is opened, reopened, the head or base branch is updated.
+    types: [opened, reopened, synchronize, edited]
+
+jobs:
+  pr:
+    name: 'pr workflow'
+    uses: './.github/workflows/pr.yml'
+    with:
+      target_system: "ubuntu-20.04"
+      python_version: "3.10"

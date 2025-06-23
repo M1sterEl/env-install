@@ -1,0 +1,61 @@
+name: pull-request-workflow
+run-name: ${{ github.event.pull_request.title }}
+
+on:
+  workflow_call:
+    inputs:
+      target_system:
+        description: "The system for which the project is packaged"
+        type: string
+        required: true
+
+      python_version:
+        description: "The python version the project is package with"
+        type: string
+        required: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.title }}-${{ github.event.pull_request.user.login }}
+  cancel-in-progress: true
+
+jobs:
+
+  package_docker:
+    runs-on: ubuntu-24.04
+    name: Packing project as a docker image
+    env:
+      BUILD_CONTEXT_DIR: "./build/build-context"
+      DOCKERFILES_DIR: "./build/dockerfiles"
+
+    steps:
+      - name: Get repo files
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+
+      - name: Copy project files to build-context dir
+        run: |
+          cp ./env-install.py $BUILD_CONTEXT_DIR
+          cp -r ./install_scripts $BUILD_CONTEXT_DIR
+          cp -r ./files $BUILD_CONTEXT_DIR
+          cp -r ./offline-dir $BUILD_CONTEXT_DIR
+
+      - name: Build docker image
+        # A Quick research shows that the ubuntu-24.04 has docker installed.
+        run: docker build --build-arg PYTHON_VERSION=${{ inputs.python_version }} --file $DOCKERFILES_DIR/${{ inputs.target_system }}.dockerfile ./build
+
+  package_static_binary:
+    name: Packing project as static binary (using Pyinstaller)
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Get repo files
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+
+      - uses: Martin005/pyinstaller-action@v1.2.0
+        with:
+          continue-on-error: true
+          spec: env-install.py
+          requirements: ./build/requirements.txt
+          python_version: ${{ inputs.python_version }}

@@ -5,6 +5,7 @@ import shutil
 import pathlib
 
 import install_scripts.constants as global_constants
+from .utils import print_success, print_info
 
 GIT_FILES_DIR = pathlib.Path(f"{global_constants.DEFAULT_CONFIG_DIR}/git")
 
@@ -17,18 +18,17 @@ def copy_custom_gitconfig(args) -> None:
 
     print_info(f"copying .gitconfig to {global_constants.HOME}")
 
-    shutil.copy(f"{GIT_FILES_DIR}/gitconfig", f"{global_constants.HOME}/.gitconfig"
+    shutil.copy(f"{GIT_FILES_DIR}/gitconfig", f"{global_constants.HOME}/.gitconfig")
 
     print_success(f"copied .gitconfig file to {global_constants.HOME}")
 
 
 def git_config_parser(subparsers_object: argparse.ArgumentParser.add_subparsers):
 
-    git_config_parser = subparsers_object.add_parser("gitconfig", help="setup .gitconfig")
+    git_config_parser = subparsers_object.add_parser("gitconfig", help="copies .gitconfig to the {global_constants.HOME}")
 
     git_config_parser.set_defaults(func=copy_custom_gitconfig)
 
 
 if __name__ == "__main__":
-    # TODO: think about it.
     pass

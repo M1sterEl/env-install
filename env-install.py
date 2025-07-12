@@ -3,7 +3,7 @@
 The file for the main command for installing the wanted environment.
 """
 import argparse
-from install_scripts.install_setup_nvim import nvim_parser
+from install_scripts import nvim_parser, git_config_parser
 
 if __name__ == "__main__":
 
@@ -16,6 +16,8 @@ if __name__ == "__main__":
 
 
     nvim_parser(subparsers)
+
+    git_config_parser(subparsers)
 
     args = main_parser.parse_args()
     args.func(args)

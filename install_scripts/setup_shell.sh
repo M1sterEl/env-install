@@ -19,7 +19,7 @@ copy_zshrc ()
     cp $COPY_FILES_DIR/zshrc $HOME/.zshrc
 }
 
-install_fzf ()
+install_wanted_pakcages ()
 {
     # Making sure the apt cache is updated.
     sudo apt update

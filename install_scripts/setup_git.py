@@ -7,8 +7,6 @@ import pathlib
 import install_scripts.constants as global_constants
 from .utils import print_success, print_info
 
-GIT_FILES_DIR = pathlib.Path(f"{global_constants.DEFAULT_CONFIG_DIR}/git")
-
 
 # We add the args to maintain the format for the rest of the sub commands default functions.
 def copy_custom_gitconfig(args) -> None:
@@ -18,7 +16,7 @@ def copy_custom_gitconfig(args) -> None:
 
     print_info(f"copying .gitconfig to {global_constants.HOME}")
 
-    shutil.copy(f"{GIT_FILES_DIR}/gitconfig", f"{global_constants.HOME}/.gitconfig")
+    shutil.copy(f"{global_constants.DEFUALT_FILES_DIR}/gitconfig", f"{global_constants.HOME}/.gitconfig")
 
     print_success(f"copied .gitconfig file to {global_constants.HOME}")
 

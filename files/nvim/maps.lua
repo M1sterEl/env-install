@@ -62,6 +62,7 @@ noremap('n', 'gb', "<CMD>:Git blame<CR>")
 noremap('n', 'dvo', "<CMD>:DiffviewOpen<CR>")
 noremap('n', 'dvf', "<CMD>:DiffviewToggleFiles<CR>")
 
+-- ToggleTerm
 -- Notice that some ToggleTerm mappings are configured in the settings.lua file.
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
@@ -76,3 +77,13 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+-- Lazygit (toggle term integration)
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
+
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>tl", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})

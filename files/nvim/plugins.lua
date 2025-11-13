@@ -17,6 +17,12 @@ vim.g.maplocalleader = ';'
 
 require("lazy").setup({
   {
+    'akinsho/toggleterm.nvim',
+    dir = "/nvim_path_to_replace/plugins/toggleterm.nvim",
+    version = "*",
+    config = true
+  },
+  {
     'isakbm/gitgraph.nvim',
 	  dir = "/nvim_path_to_replace/plugins/gitgraph",
     opts = {
@@ -68,7 +74,7 @@ require("lazy").setup({
   { "hrsh7th/nvim-cmp",
 	  dir = "/nvim_path_to_replace/plugins/nvim-cmp",
   },
-  { 
+  {
     "hrsh7th/cmp-nvim-lsp",
 	  dir = "/nvim_path_to_replace/plugins/cmp-nvim-lsp",
   },

@@ -10,7 +10,7 @@ end
 
 -- General
 noremap('n', 'Q', '<CMD>noh<CR>') -- Disable search highlight
-noremap('n', '<leader>t', '<CMD>Trim<CR>') -- Trim whitespaces
+noremap('n', '<leader>w', '<CMD>Trim<CR>') -- Trim whitespaces
 noremap('n', 'nl', 'o<Esc>') -- Add a black line below
 noremap('n', 'sa', 'gg0vG$') -- Visual select the entire file
 noremap({'n','i'}, '<C-s>', '<Esc>:w<CR>') -- Ctrl+s save
@@ -61,3 +61,18 @@ noremap('n', 'gb', "<CMD>:Git blame<CR>")
 -- Vim Diffview
 noremap('n', 'dvo', "<CMD>:DiffviewOpen<CR>")
 noremap('n', 'dvf', "<CMD>:DiffviewToggleFiles<CR>")
+
+-- Notice that some ToggleTerm mappings are configured in the settings.lua file.
+function _G.set_terminal_keymaps()
+  local opts = {buffer = 0}
+  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-[>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+  vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
+end
+
+-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')

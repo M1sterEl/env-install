@@ -70,6 +70,11 @@ require("ibl").setup {
     scope = { enabled = false },
 }
 
+require("toggleterm").setup {
+  open_mapping = {[[<leader>tt]]},
+  hide_nubmers = true,
+}
+
 -- Declared here for all other lspconfig settings
 lspconfig = require("lspconfig")
 -- To allow for better autocompletion, this needs to be added to every new lsp server defintion

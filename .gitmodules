@@ -73,3 +73,6 @@
 [submodule "offline-dir/nvim/nvim-plugins/neominimap.nvim"]
 	path = offline-dir/nvim/nvim-plugins/neominimap.nvim
 	url = https://github.com/Isrothy/neominimap.nvim.git
+[submodule "offline-dir/nvim/nvim-plugins/toggleterm.nvim"]
+	path = offline-dir/nvim/nvim-plugins/toggleterm.nvim
+	url = https://github.com/akinsho/toggleterm.nvim.git

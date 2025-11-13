@@ -9,8 +9,7 @@ from install_scripts.utils import get_from_url, ask_if_to_change_value, print_in
 import install_scripts.constants as global_constants
 
 
-NVIM_VERSION="v0.10.0"
-NVIM_APPIMAGE_URL = f"https://github.com/neovim/neovim/releases/download/{NVIM_VERSION}/nvim.appimage"
+NVIM_APPIMAGE_URL = f"https://github.com/neovim/neovim/releases/download/{global_constants.NVIM_VERSION}/nvim.appimage"
 
 HOST_NVIM_PATH_LOCATION = pathlib.Path("/usr/bin/nvim")
 
@@ -19,7 +18,7 @@ HOST_NVIM_PATH_LOCATION = pathlib.Path("/usr/bin/nvim")
 NVIM_OFFLINE_DIR = pathlib.Path(f"{global_constants.TOP_PROJECT_DIR}/offline-dir/nvim")
 NVIM_OFFLINE_APPIMAGE_LOCATION = pathlib.Path(f"{NVIM_OFFLINE_DIR}/nvim.appimage")
 NVIM_PLUGINS_DIR = pathlib.Path(f"{NVIM_OFFLINE_DIR}/nvim-plugins")
-NVIM_FILES_DIR = pathlib.Path(f"{global_constants.DEFUALT_FILES_DIR}/nvim")
+NVIM_FILES_DIR = pathlib.Path(f"{global_constants.DEFAULT_FILES_DIR}/nvim")
 
 
 def install_nvim_appimage(offline_mode: bool = False) -> None:
@@ -37,7 +36,7 @@ def install_nvim_appimage(offline_mode: bool = False) -> None:
         shutil.copy(NVIM_OFFLINE_APPIMAGE_LOCATION, HOST_NVIM_PATH_LOCATION)
 
     else:
-        print_info(f"getting nvim.appimage version: {NVIM_VERSION} using online mode")
+        print_info(f"getting nvim.appimage version: {global_constants.NVIM_VERSION} using online mode")
         nvim_appimage_bin_response = get_from_url(NVIM_APPIMAGE_URL)
 
         with open(HOST_NVIM_PATH_LOCATION, 'wb') as nvim_bin_file:
@@ -134,7 +133,9 @@ def setup_plugins_path(host_nvim_config_path: pathlib.Path) -> None:
 
 def main(args):
 
-    install_nvim_appimage(args.offline)
+    # If the user specified he will manually install nvim later.
+    if not args.manually_install_nvim:
+        install_nvim_appimage(args.offline)
 
     # We set this variable here and not in the top of the file as a constant,
     # since otherwise the user will be asked for the value each time we load this module.
@@ -162,16 +163,19 @@ def nvim_parser(subparsers_object: argparse.ArgumentParser.add_subparsers):
     nvim_parser = subparsers_object.add_parser("nvim", help="install nvim")
 
     nvim_parser.add_argument("-o", "--offline",
-                             help="install while assuming not internet connection",
+                             help="install while assuming no internet connection",
                              action="store_true")
 
     nvim_parser.add_argument("-l", "--lsp-install",
                              help="installs pre-determined lsps (NOT IMPLEMNTED YET)",
                              action="store_true")
 
+    nvim_parser.add_argument("-m", "--manually-install-nvim",
+                             help="don't install the nvim appimage, it will be installed later",
+                             action="store_true")
+
     nvim_parser.set_defaults(func=main)
 
 
 if __name__ == "__main__":
-    # TODO: think about it.
     pass

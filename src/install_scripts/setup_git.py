@@ -5,8 +5,8 @@ import shutil
 import pathlib
 import subprocess
 
-import install_scripts.constants as global_constants
-from .utils import print_success, print_info, print_success, print_warning
+import src.constants as global_constants
+from src.install_scripts.utils import print_success, print_info, print_success, print_warning
 
 GIT_FILES_DIR = pathlib.Path(f"{global_constants.DEFAULT_FILES_DIR}")
 
@@ -74,7 +74,7 @@ def main(args) -> None:
 
 def git_parser(subparsers_object: argparse.ArgumentParser.add_subparsers):
 
-    git_parser = subparsers_object.add_parser("git", help="copies .gitconfig to the {global_constants.HOME}")
+    git_parser = subparsers_object.add_parser("git", help=f"copies .gitconfig to '{global_constants.HOME}' or a supplied dir")
 
     git_parser.add_argument("-o", "--offline",
                              help="install while assuming no internet connection",

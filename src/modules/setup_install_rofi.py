@@ -6,7 +6,7 @@ import pathlib
 import re
 from sys import exit as sysexit
 
-from src.install_scripts.utils import print_info, print_success, print_error, ask_if_to_change_value
+from src.modules.utils import print_info, print_success, print_error, ask_if_to_change_value
 import src.constants as global_constants
 
 

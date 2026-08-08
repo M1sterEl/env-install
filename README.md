@@ -79,7 +79,7 @@ Under the lua dir there are 3 files:
 ### Everything Else
 Currently the rest of the environment wasn't converted to python (from bash) and is not yet part of the main `env-intstall.py` script.
 
-For other relevant environment setups, look at the *install_scripts* dir for relevant bash scripts for each environment section.
+For other relevant environment setups, look at the *modules* dir for relevant bash scripts for each environment section.
 
 ## Air-Gapped network
 WIP

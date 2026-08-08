@@ -4,7 +4,7 @@ The file for the main command for installing the wanted environment.
 """
 import argparse
 
-from src.install_scripts import nvim_parser, git_parser, basic_deps_parser, omz_parser, rofi_parser, shell_parser
+from src.modules import nvim_parser, git_parser, basic_deps_parser, omz_parser, rofi_parser, shell_parser, submodules_parser
 from src.classes import PackageManager
 from src import constants as global_constants
 

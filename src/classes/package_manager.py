@@ -1,5 +1,5 @@
 import subprocess
-from ..install_scripts.utils import print_error, print_success
+from ..modules.utils import print_error, print_success
 
 class PackageManager():
     SUPPORTED_PACKAGE_MANAGERS = ["apt", "dnf", "brew"]

@@ -6,7 +6,7 @@ import shutil
 import pathlib
 from sys import exit as sysexit
 
-from src.install_scripts.utils import print_info, print_success, print_warning, special_warning_aproval_or_exit
+from src.modules.utils import print_info, print_success, print_warning, special_warning_aproval_or_exit
 import src.constants as global_constants
 
 I3_FILES_DIR = pathlib.Path(f"{global_constants.DEFAULT_FILES_DIR}/i3")

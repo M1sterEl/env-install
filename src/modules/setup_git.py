@@ -6,7 +6,7 @@ import pathlib
 import subprocess
 
 import src.constants as global_constants
-from src.install_scripts.utils import print_success, print_info, print_success, print_warning
+from src.modules.utils import print_success, print_info, print_success, print_warning
 
 GIT_FILES_DIR = pathlib.Path(f"{global_constants.DEFAULT_FILES_DIR}")
 

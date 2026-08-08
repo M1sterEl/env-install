@@ -4,7 +4,7 @@ import argparse
 import subprocess
 from sys import exit as sysexit
 
-from src.install_scripts.utils import print_info, print_success
+from src.modules.utils import print_info, print_success
 import src.constants as global_constants
 
 

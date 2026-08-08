@@ -5,7 +5,7 @@ import shutil
 import pathlib
 import re
 
-from src.install_scripts.utils import get_from_url, ask_if_to_change_value, print_info, print_success
+from src.modules.utils import get_from_url, ask_if_to_change_value, print_info, print_success
 import src.constants as global_constants
 
 

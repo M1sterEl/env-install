@@ -6,7 +6,7 @@ import tempfile
 import re
 from sys import exit as sysexit
 
-from src.install_scripts.utils import get_from_url, print_info, print_success, print_error
+from src.modules.utils import get_from_url, print_info, print_success, print_error
 import src.constants as global_constants
 
 

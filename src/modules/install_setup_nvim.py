@@ -131,7 +131,7 @@ def setup_plugins_path(host_nvim_config_path: pathlib.Path) -> None:
     print_success("updated plugins file")
 
 
-def main(args):
+def main(args, package_manager) -> None:
 
     # If the user specified he will manually install nvim later.
     if not args.manually_install_nvim:

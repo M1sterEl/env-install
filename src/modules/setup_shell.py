@@ -36,7 +36,7 @@ def install_wanted_packages(packge_manager: PackgeManager) -> None:
 
     print_info(f"installing wanted packages: {' '.join(WANTED_PACKAGES)}")
 
-    if not packge_manager.install(WANTED_PACKAGES):
+    if not packge_manager.install_packages(WANTED_PACKAGES):
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 

@@ -32,7 +32,7 @@ def install_basic_deps(packge_manager: PackgeManager) -> None:
         sysexit(1)
 
     print_info(f"installing basic universal dependencies: {' '.join(BASIC_DEPS)}")
-    if not package_manger.install(BASIC_DEPS):
+    if not package_manger.install_packages(BASIC_DEPS):
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 

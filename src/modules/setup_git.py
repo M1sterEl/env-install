@@ -62,7 +62,7 @@ def install_lazygit(target_os: str, offline: bool) -> None:
         print_warning("didn't install lazygit to environment")
 
 
-def main(args) -> None:
+def main(args, package_manager) -> None:
     """
     Copy gitconfig file and install lazyvim based on given os.
     """

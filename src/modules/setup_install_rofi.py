@@ -27,7 +27,7 @@ def install_rofi(packge_manager: PackgeManager) -> None:
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 
-    if not package_manger.install("rofi"):
+    if not package_manger.install_packages("rofi"):
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 

@@ -53,5 +53,5 @@ if __name__ == "__main__":
     if not hasattr(args, "target_os"):
         args.func(args)
     else:
-        package_manager = PackageManager(global_constants.TargetOS[f"{args.target_os}"])
+        package_manager = PackageManager(global_constants.TargetOS[f"{args.target_os}"].value)
         args.func(args, package_manager)

@@ -27,7 +27,7 @@ def install_i3(packge_manager: PackgeManager) -> None:
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 
-    if not package_manger.install("i3"):
+    if not package_manger.install_packages("i3"):
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 
@@ -42,7 +42,7 @@ def install_personal_deps() -> None:
     print_info("installing personal preference dependences: jq")
 
     # Needed for on the fly workspace naming.
-    if not package_manger.install("jq"):
+    if not package_manger.install_packages("jq"):
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 

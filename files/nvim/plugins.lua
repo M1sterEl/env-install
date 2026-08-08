@@ -116,8 +116,12 @@ require("lazy").setup({
 	  dir = "/nvim_path_to_replace/plugins/vim-abolish"
 	},
 	{
-	  "RRethy/vim-illuminate",
-	  dir = "/nvim_path_to_replace/plugins/vim-illuminate"
+	  -- Highlights other occurrences of the word under the cursor.
+	  "echasnovski/mini.cursorword",
+	  dir = "/nvim_path_to_replace/plugins/mini.cursorword",
+	  config = function()
+	    require("mini.cursorword").setup()
+	  end,
 	},
 	{
 	  "sindrets/diffview.nvim",
@@ -142,6 +146,54 @@ require("lazy").setup({
   {
     "ntpeters/vim-better-whitespace",
 	  dir = "/nvim_path_to_replace/plugins/vim-better-whitespace",
+  },
+  {
+    -- Builtin ftplugins (e.g. ftplugin/lua.lua) call vim.treesitter.start()
+    -- unconditionally when a matching file is opened. Without a compiled
+    -- parser available on 'runtimepath' that call throws
+    -- "Parser could not be created for buffer ... and language" on every
+    -- such buffer. nvim-treesitter just installs the parsers this needs;
+    -- highlighting itself is Neovim core's vim.treesitter.start(), not a
+    -- plugin API (the "main" branch dropped the old configs.setup() shim),
+    -- so this doesn't touch LSP or nvim-cmp.
+    "nvim-treesitter/nvim-treesitter",
+    dir = "/nvim_path_to_replace/plugins/nvim-treesitter",
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate", -- compiles/updates parsers, needs network + a C compiler (cc/gcc) on first run
+    config = function()
+      -- Plugins (e.g. Telescope's buffer previewer) call vim.treesitter.start()
+      -- directly for whatever filetype is on screen, with no pcall of their
+      -- own. For any language without an installed/compiled parser this
+      -- throws "Parser could not be created ...". Patch the shared function
+      -- once so every caller, ours and every plugin's, falls back to legacy
+      -- regex/syntax highlighting instead of an error.
+      local ts_start = vim.treesitter.start
+      vim.treesitter.start = function(bufnr, lang)
+        local ok, ret = pcall(ts_start, bufnr, lang)
+        if ok then return ret end
+        -- Signal failure like a normal ts_highlighter would, so callers that
+        -- check the return value (e.g. Telescope) run their own regex
+        -- fallback with the filetype they already know, instead of us
+        -- guessing from a preview buffer's (often unset) 'filetype' option.
+        bufnr = bufnr or vim.api.nvim_get_current_buf()
+        pcall(function() vim.bo[bufnr].syntax = vim.bo[bufnr].filetype end)
+        return false
+      end
+
+      -- To support a new language, just add its name here, e.g. "python", "bash", "markdown".
+      local parsers = { "lua", "python", "gdscript", "terraform", "git_config", "git_rebase", "gitcommit", "gitignore", "gitattributes", "bash" , "markdown", "json", "dockerfile", "helm", "ini", "toml", "yaml", "zsh", "ssh_config", "diff"}
+
+      -- Async install; if this hasn't finished yet (e.g. no network on first
+      -- run) the FileType autocmd below still fires but the patched
+      -- vim.treesitter.start() above no-ops instead of crashing.
+      require("nvim-treesitter").install(parsers)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = parsers,
+        callback = function() vim.treesitter.start() end,
+      })
+    end,
   },
 })
 

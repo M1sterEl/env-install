@@ -106,7 +106,7 @@ fi
 stty -ixon
 
 # fzf
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+source fzf_keybindings_path_to_replace
 
 if [[ -z $(declare -f my_cat) ]]; then
     function my_cat() {

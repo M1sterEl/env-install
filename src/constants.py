@@ -6,7 +6,7 @@ from os import getenv
 import pathlib
 
 # Nvim install.
-NVIM_VERSION="v0.10.0"
+NVIM_VERSION="v0.12.4"
 
 # Host paths.
 HOME = getenv("HOME")

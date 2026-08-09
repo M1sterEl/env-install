@@ -6,7 +6,7 @@ import tempfile
 import re
 from sys import exit as sysexit
 
-from src.install_scripts.utils import get_from_url, print_info, print_success, print_error
+from src.modules.utils import get_from_url, print_info, print_success, print_error
 import src.constants as global_constants
 
 
@@ -25,14 +25,14 @@ OMZ_INSTALL_SCRIPT_URL = "https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/in
 
 def install_zsh(packge_manager: PackgeManager) -> None:
     """
-    Installs zsh using dnf.
+    Installs zsh using correct package manager.
 
     :packge_manager:    The package manger object to use for installing packages.
     """
 
     print_info("installing zsh")
 
-    if not packge_manager.install("zsh"):
+    if not packge_manager.install_packages("zsh"):
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 

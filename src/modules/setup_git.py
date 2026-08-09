@@ -6,9 +6,12 @@ import pathlib
 import subprocess
 
 import src.constants as global_constants
-from src.install_scripts.utils import print_success, print_info, print_success, print_warning
+from src.modules.utils import print_success, print_info, print_warning
 
 GIT_FILES_DIR = pathlib.Path(f"{global_constants.DEFAULT_FILES_DIR}")
+
+# Fedora's dnf repos don't carry lazygit, it needs this copr repo enabled first.
+LAZYGIT_COPR_REPO = "dejan/lazygit"
 
 
 # We add the args to maintain the format for the rest of the sub commands default functions.
@@ -24,52 +27,46 @@ def copy_custom_gitconfig() -> None:
     print_success(f"copied .gitconfig file to {global_constants.HOME}")
 
 
-def install_lazygit(target_os: str, offline: bool) -> None:
+def install_lazygit(package_manager: "PackageManager", offline: bool) -> None:
     """
     Installs Lazygit to the environment.
 
-    :param target_os:   the os we are installing lazygit on.
-    :param offline:     whether to assume internet connection or not (true; to assume, false; to not assume).
+    :param package_manager: The package manager object to use for installing lazygit.
+    :param offline:          whether to assume internet connection or not (true; to assume, false; to not assume).
     """
-
-    print_info(f"installing lazygit using the method for {target_os}")
 
     if offline:
         raise NotImplementedError("offline install of lazygit not supported yet")
 
-    success = True
+    # For fedora machines (and the like), a repo needs to be enabled to be able to install lazygit.
+    if package_manager.package_manager == "dnf":
+        print_info(f"enabling copr repo {LAZYGIT_COPR_REPO} for lazygit")
 
-    try:
-        match target_os:
-            case "mac":
-                print_info(f"{target_os} was defined as the target os, installing using homebrew")
-                subprocess.run(["brew", "install", "lazygit"], capture_output=False)
+        copr_result = subprocess.run(
+            ["sudo", "dnf", "copr", "enable", "-y", LAZYGIT_COPR_REPO],
+            capture_output=True, text=True,
+        )
 
-            case "debian":
-                print_info(f"{target_os} was defined as the target os, installing using apt")
-                subprocess.run(["sudo", "apt", "install", "lazygit"], capture_output=False)
+        if copr_result.returncode:
+            print_warning(f"failed to enable {LAZYGIT_COPR_REPO} copr repo, output: {copr_result.stderr}")
+            return
 
-            case _:
-                print_error("unrecognized target os detected, didn't install lazygit")
-                success = False
-    except:
-        success = False
+    print_info(f"installing lazygit using {package_manager.package_manager}")
 
-    if success:
+    if package_manager.install_packages("lazygit"):
         print_success("installed lazygit to environment")
-
     else:
         print_warning("didn't install lazygit to environment")
 
 
-def main(args) -> None:
+def main(args, package_manager) -> None:
     """
     Copy gitconfig file and install lazyvim based on given os.
     """
 
     copy_custom_gitconfig()
 
-    install_lazygit(args.target_os, args.offline)
+    install_lazygit(package_manager, args.offline)
 
 
 def git_parser(subparsers_object: argparse.ArgumentParser.add_subparsers):

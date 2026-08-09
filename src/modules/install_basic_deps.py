@@ -4,7 +4,7 @@ import argparse
 import subprocess
 from sys import exit as sysexit
 
-from src.install_scripts.utils import print_info, print_success
+from src.modules.utils import print_info, print_success
 import src.constants as global_constants
 
 
@@ -32,7 +32,7 @@ def install_basic_deps(packge_manager: PackgeManager) -> None:
         sysexit(1)
 
     print_info(f"installing basic universal dependencies: {' '.join(BASIC_DEPS)}")
-    if not package_manger.install(BASIC_DEPS):
+    if not package_manger.install_packages(BASIC_DEPS):
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 

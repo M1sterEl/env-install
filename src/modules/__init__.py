@@ -5,3 +5,4 @@ from .install_oh_my_zsh import omz_parser
 from .setup_install_i3 import i3_parser
 from .setup_install_rofi import rofi_parser
 from .setup_shell import shell_parser
+from .update_submodules import submodules_parser

@@ -6,7 +6,7 @@ import shutil
 import pathlib
 from sys import exit as sysexit
 
-from src.install_scripts.utils import print_info, print_success, print_warning, special_warning_aproval_or_exit
+from src.modules.utils import print_info, print_success, print_warning, special_warning_aproval_or_exit
 import src.constants as global_constants
 
 I3_FILES_DIR = pathlib.Path(f"{global_constants.DEFAULT_FILES_DIR}/i3")
@@ -27,7 +27,7 @@ def install_i3(packge_manager: PackgeManager) -> None:
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 
-    if not package_manger.install("i3"):
+    if not package_manger.install_packages("i3"):
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 
@@ -42,7 +42,7 @@ def install_personal_deps() -> None:
     print_info("installing personal preference dependences: jq")
 
     # Needed for on the fly workspace naming.
-    if not package_manger.install("jq"):
+    if not package_manger.install_packages("jq"):
         # The error printing is handled inside the package_manger.install method.
         sysexit(1)
 

@@ -28,9 +28,6 @@
 [submodule "nvim-plugins/vim-abolish"]
 	path = offline-dir/nvim/nvim-plugins/vim-abolish
 	url = https://github.com/tpope/vim-abolish
-[submodule "nvim-plugins/vim-illuminate"]
-	path = offline-dir/nvim/nvim-plugins/vim-illuminate
-	url = https://github.com/RRethy/vim-illuminate
 [submodule "nvim-plugins/vim-better-whitespace"]
 	path = offline-dir/nvim/nvim-plugins/vim-better-whitespace
 	url = https://github.com/ntpeters/vim-better-whitespace
@@ -73,3 +70,9 @@
 [submodule "offline-dir/nvim/nvim-plugins/toggleterm.nvim"]
 	path = offline-dir/nvim/nvim-plugins/toggleterm.nvim
 	url = https://github.com/akinsho/toggleterm.nvim.git
+[submodule "offline-dir/nvim/nvim-plugins/nvim-treesitter"]
+	path = offline-dir/nvim/nvim-plugins/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "offline-dir/nvim/nvim-plugins/mini.cursorword"]
+	path = offline-dir/nvim/nvim-plugins/mini.cursorword
+	url = https://github.com/echasnovski/mini.cursorword.git

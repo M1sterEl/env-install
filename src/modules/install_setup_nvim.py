@@ -5,7 +5,7 @@ import shutil
 import pathlib
 import re
 
-from src.install_scripts.utils import get_from_url, ask_if_to_change_value, print_info, print_success
+from src.modules.utils import get_from_url, ask_if_to_change_value, print_info, print_success
 import src.constants as global_constants
 
 
@@ -131,7 +131,7 @@ def setup_plugins_path(host_nvim_config_path: pathlib.Path) -> None:
     print_success("updated plugins file")
 
 
-def main(args):
+def main(args, package_manager) -> None:
 
     # If the user specified he will manually install nvim later.
     if not args.manually_install_nvim:

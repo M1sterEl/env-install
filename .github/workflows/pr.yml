@@ -36,7 +36,7 @@ jobs:
       - name: Copy project files to build-context dir
         run: |
           cp ./env-install.py $BUILD_CONTEXT_DIR
-          cp -r ./install_scripts $BUILD_CONTEXT_DIR
+          cp -r ./modules $BUILD_CONTEXT_DIR
           cp -r ./files $BUILD_CONTEXT_DIR
           cp -r ./offline-dir $BUILD_CONTEXT_DIR
 
